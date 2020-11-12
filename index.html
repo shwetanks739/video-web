@@ -1,0 +1,50 @@
+
+
+Create a Video Conference app like zoom
+By Hemang
+April 22, 2020
+Have you ever wanted to create an app like zoom ? Well that's not difficult at all. I will help you to create a video conferencing app like zoom without code ! And remember it will not be as perfect as zoom as this is not involving any complicated programming and a server.
+
+
+
+Create a new html file and copy the code below and run it. It's that simple!
+
+
+                               
+<head>
+  <script src="api.js"></script>
+</head>
+<body>
+
+<button id="start" type="button">Start</button>
+<div id="jitsi-container">
+</div>
+
+<script>
+var button = document.querySelector('#start');
+var container = document.querySelector('#jitsi-container');
+var api = null;
+
+button.addEventListener('click', () => {
+    var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var stringLength = 30;
+
+    function pickRandom() {
+    return possible[Math.floor(Math.random() * possible.length)];
+    }
+
+var randomString = Array.apply(null, Array(stringLength)).map(pickRandom).join('');
+
+    var domain = "github.shwetank";
+    var options = {
+        "roomName": randomString,
+        "parentNode": container,
+        "width": 600,
+        "height": 600,
+    };
+    api = new JitsiMeetExternalAPI(domain, options);
+});
+
+</script>
+</body>
+</html>
